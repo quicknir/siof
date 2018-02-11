@@ -9,10 +9,7 @@ inline std::string& GetFoo() {
 }
 static std::string& foo = GetFoo();
 
-inline std::string MakeBar() {
-  std::cout << "foo has address " << &foo << "\n";
-  return foo + " too";
-}
+__attribute__((noinline)) inline std::string MakeBar() { return foo + " too"; }
 
 inline std::string& GetBar() {
   static std::string bar = MakeBar();
