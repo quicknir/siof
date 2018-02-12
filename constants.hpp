@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <string>
 
 inline std::string& GetFoo() {
@@ -9,10 +8,10 @@ inline std::string& GetFoo() {
 }
 static std::string& foo = GetFoo();
 
-__attribute__((noinline)) inline std::string MakeBar(std::string const & x) { return x + " too"; }
+__attribute__((noinline)) inline std::string MakeBar() { return foo + " too"; }
 
 inline std::string& GetBar() {
-  static std::string bar = MakeBar(foo);
+  static std::string bar = MakeBar();
   return bar;
 }
 static std::string& bar = GetBar();
